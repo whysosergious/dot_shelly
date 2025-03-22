@@ -16,5 +16,3 @@ inside repo run:
 - node
 - rioterm (optional)
 
-# todo
-[] installation script (init.nu)

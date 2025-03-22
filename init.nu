@@ -6,7 +6,7 @@ def handle_config [
 	let source_path = [".config", $name] | path join 
 	let target_path = [$env.HOME, ".config", $name] | path join
 
-	rm -rf $target_path
+	rm -r -f $target_path
 	cp -r $source_path $target_path 
 
 	print $"handled ($name) config"
@@ -43,6 +43,23 @@ def handle_install [] {
 
 
 
+# .shelly
+def handle_shelly [] {
+	let shelly_path = [$env.HOME ".shelly"] | path join
+	let bin_path = [$shelly_path "bin"] | path join
+	let nvim_source_path = ["./nvim"] | path join
+	let nvim_target_path = [$shelly_path "nvim"] | path join
+
+	rm -r -f $shelly_path
+	mkdir $shelly_path
+	mkdir $bin_path
+	cp -r $nvim_source_path $nvim_target_path
+	
+	print "~/.shelly/ - ok"
+}
+
+
+
 def main [] {
 	print "*** dot_shelly init ***"
 
@@ -52,6 +69,10 @@ def main [] {
 	if $skip_install == false {
 		handle_install;
 	}
+
+
+	## init .shelly
+	handle_shelly;
 
 
 	## configs
