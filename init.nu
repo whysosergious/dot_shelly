@@ -3,21 +3,19 @@
 def handle_config [
 	name: string	# target config
 ] {
-	print $"*** handle ($name) config ***"
-	
 	let source_path = [".config", $name] | path join 
 	let target_path = [$env.HOME, ".config", $name] | path join
 
 	rm -rf $target_path
 	cp -r $source_path $target_path 
 
-	print $"copied ($name)"
+	print $"handled ($name) config"
 }
 
 
 
 # install pre-req
-def handle_istall [] {
+def handle_install [] {
 
 	# update apt 
 	sudo apt update;
@@ -29,8 +27,12 @@ def handle_istall [] {
 	print "*** installing gh ***"
 	sudo apt install gh;
 	
-	print "*** auth github ***"
-	gh auth login;
+
+	let skip_gh_auth = [true false] | input list "skip github login?"
+	if $skip_gh_auth == false {
+		print "*** auth github ***"
+		gh auth login;
+	}
 
 
 	# nvim pre-req
@@ -44,13 +46,18 @@ def handle_istall [] {
 def main [] {
 	print "*** dot_shelly init ***"
 
+	let skip_install = [true false] | input list "skip install?"
 
 	## install
-	# handle_install;
+	if $skip_install == false {
+		handle_install;
+	}
 
 
 	## configs
 	["nushell", "nvim", "rio"] | each { |name| 
 		handle_config $name 
 	}
+
+	print "____ doneski ____"
 }
