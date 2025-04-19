@@ -39,8 +39,29 @@ def handle_install [] {
 	print "*** installing nvim pre-req ***"
 	sudo apt install ripgrep;
 	sudo apt install fonts-noto-color-emoji
+
+	# install deno
+	cargo binstall deno
 }
 
+
+const GHURL = "https://github.com/whysosergious/"
+
+# handle owned dependancies
+def ws_build_deps [
+	$repo_name: string
+] {
+	print $"cloning repo ($repo_name)"
+
+	let repo_url = $"($GHURL)($repo_name).git"
+	let target_path = [$env.HOME, ".shelly" $repo_name] | path join
+
+	print $"cloning ($repo_url)"
+
+	git clone $repo_url $target_path
+	
+	cargo install --path $target_path
+}
 
 
 # .shelly
@@ -75,10 +96,23 @@ def main [] {
 	handle_shelly;
 
 
-	## configs
-	["nushell", "nvim", "rio"] | each { |name| 
-		handle_config $name 
+	let skip_config = [true false] | input list "skip porting config files?"
+
+	if $skip_config == false {
+		## configs
+		["nushell", "nvim", "rio"] | each { |name| 
+			handle_config $name 
+		}
 	}
 
+	
+	let skip_ws_build = [true false] | input list "skip building ws dependensies?"
+
+	if $skip_ws_build == false {
+		ws_build_deps "shelly-run";
+	}
+
+
 	print "____ doneski ____"
+	print "clone the main shelly repo and run 'shelly-run nu -n shelly.np srv --master'"
 }
