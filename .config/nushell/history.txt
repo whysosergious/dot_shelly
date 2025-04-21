@@ -1,0 +1,105 @@
+nu init.nu
+ls
+exit
+nvim .
+..
+cd shelly_websocket/
+echo 'hi'
+websocat ws://127.0.0.1:8080/ws
+websocat ws://127.0.0.1:8080/ws/
+exit
+git add .
+..
+cd dot_shelly/
+git add .
+git commit -m 'term+'
+git push origin master
+..
+cd shelly_websocket/
+exit
+nvim .
+cd ~
+cd .config/nvim/
+nvim .
+..
+cp nvim ~/!work/dot_shelly/.config/nvim -r -f
+..
+cd !work/dot_shelly/.config/
+ls
+cd nvim/
+ls
+rm -rf nvim
+ls -a
+cd ~
+cd .config/nvim/
+..
+cd !work/dot_shelly
+git add .
+git commit -m 'test'
+git commit -m 'gitignore'
+git push origin master
+exit
+nu
+nvim .
+nu
+version
+nu
+..
+cd shelly_websocket/
+..
+ls
+cd nushell/
+ls
+ls -a
+open .env
+open .env | filter { |line| ($line | str trim) !~ '^#' and ($line | str trim) != '' }
+open .env | lines | filter { |line| ($line | str trim) !~ '^#' and ($line | str trim) != '' }
+open .env | lines | filter { |line| ($line | str trim) !~ '^#' and ($line | str trim) != '' } | | parse "{key}={value}" 
+open .env | lines | filter { |line| ($line | str trim) !~ '^#' and ($line | str trim) != '' } | | parse "{key}={value}" | | reduce -f {} { |acc, row| $acc | merge { ($row.key): $row.value } }
+open .env | lines | filter { |line| ($line | str trim) !~ '^#' and ($line | str trim) != '' } | | parse "{key}={value}" | | reduce -f {} { |acc, row| $acc | print $row }
+open .env | lines | filter { |line| ($line | str trim) !~ '^#' and ($line | str trim) != '' } | | parse "{key}={value}" | | reduce -f {} { |acc, row| $acc | print $acc }
+open .env | lines | filter { |line| ($line | str trim) !~ '^#' and ($line | str trim) != '' } | | parse "{key}={value}" | | reduce -f {} { |row, acc| $acc | print $row }
+open .env | lines | filter { |line| ($line | str trim) !~ '^#' and ($line | str trim) != '' } | | parse "{key}={value}" | | reduce -f {} { |row, acc| $acc | print $row.key }
+exit
+nu
+$env.OPEN_AI_API_KEY
+path
+nu
+nu
+nu
+$env.OPEN_AI_API_KEY
+nvim .
+....
+cd ~
+cd bin
+cd .config/nushell/
+nvim 
+nvim .
+exit
+pv
+^export '~/.config/shelly/bin'
+bash
+nvim .
+la
+nvim .
+nvim 
+cd .config/nushell/
+..
+ls
+..
+ls
+nvim
+bash
+ls
+ls -a
+--
+..
+ls
+..
+ls
+nvim 
+nvim
+cd ~
+nvim .
+cd .config
+cp nvim ~/!work/dot_shelly/.config -r -f
