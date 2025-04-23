@@ -103,3 +103,52 @@ cd ~
 nvim .
 cd .config
 cp nvim ~/!work/dot_shelly/.config -r -f
+cp nushell ~/!work/dot_shelly/.config -r -f
+..
+cd !work/dot_shelly
+git add .
+git commit -m '.env test'
+git push origin master
+..
+cd shelly_websocket/
+nvim
+nvim .
+nvim .
+nvim
+nvim .
+cd .config/nvim
+nvim .
+cd .config/nvim
+nvim
+cd .config/nvim
+nvim .
+cd .config/nvim
+nvim
+...
+ls
+lsa
+ls -a
+$env.OPEN_AI_API_KEY
+nvim .bashrc
+cd .config/nvim
+nvim 
+nvim
+exit
+bash
+nvim
+nvim .bashrc
+nvim
+cd .config
+cp nushell ~/!work/dot_shelly/.config -r -f
+cp nvim ~/!work/dot_shelly/.config -r -f
+cd nvim/
+nvim .
+cd !work/dot_shelly
+..
+cd shelly_websocket/
+websocat ws://127.0.0.1:8080/ws/
+nvim .
+nvim 
+nvim .
+..
+cp nvim ~/!work/dot_shelly/.config -r -f

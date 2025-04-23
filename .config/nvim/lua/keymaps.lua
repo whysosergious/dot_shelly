@@ -53,3 +53,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- oil config
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+
+-- group: open
+-------------------------------------------------
+vim.keymap.set('n', '<leader>o', '', { desc = '[o]pen' })
+
+-- terminal
+vim.keymap.set('n', '<leader>oth', '<CMD>split | terminal<CR>20<C-w>-i', { desc = 'horizontal split with a terminal' })
+vim.keymap.set('n', '<leader>otv', '<CMD>vsplit | terminal<CR>20<C-w><i', { desc = 'horizontal split with a terminal' })
+
+-- geepity
+vim.keymap.set('n', '<leader>og', '<CMD>ChatGPT<CR>', { desc = 'geepity' })
